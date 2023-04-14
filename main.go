@@ -102,4 +102,8 @@ func doMigrate() {
 	}
 
 	rg.Must0(os.WriteFile("data.json", rg.Must(json.MarshalIndent(db, "", "  ")), 0644))
+
+	for _, fileJSON := range fileJSONs {
+		rg.Must0(os.Remove(fileJSON))
+	}
 }
